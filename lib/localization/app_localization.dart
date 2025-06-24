@@ -21,6 +21,7 @@ class AppLocalization extends Translations {
           "work": "WORK HISTORY",
           "working_on": "working on",
           "insurance": "INSURANCE",
+          "expire_date": "Expire Date",
           "course": "COURSES",
           "report": "REPORTS",
           "certificate": "CERTIFICATES",
