@@ -110,7 +110,9 @@ class LoginScreen extends GetWidget<LoginController> {
                         decoration: InputDecoration(
                           labelText: 'password'.tr,
                           hintText: 'hint_password'.tr,
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
                           prefixIcon: Icon(Icons.password_outlined),
                           suffix: IconButton(
                             icon: Icon(

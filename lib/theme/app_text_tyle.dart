@@ -24,9 +24,21 @@ class AppStyle {
   );
   static TextStyle homeCardText3 = const TextStyle(
     color: AppColors.primary,
-    fontSize: 25,
+    fontSize: 19,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.bold,
+  );
+  static TextStyle homeCardNumber = const TextStyle(
+    color: AppColors.primary,
+    fontSize: 30,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle homeCardSmall = const TextStyle(
+    color: AppColors.secondary,
+    fontSize: 15,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.normal,
   );
 
   static TextStyle inputText = const TextStyle(

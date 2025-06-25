@@ -16,7 +16,7 @@ class HomeScreen extends GetWidget<HomeController> {
       backgroundColor: Color.fromARGB(255, 223, 212, 228),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,6 +44,12 @@ class HomeScreen extends GetWidget<HomeController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          BackButton(
+                            color: AppColors.white,
+                            onPressed: () {
+                              Get.toNamed('/login');
+                            },
+                          ),
                           Text(
                             "AJX HOLDINGS",
                             style: AppStyle.homeWhite,
@@ -117,98 +123,282 @@ class HomeScreen extends GetWidget<HomeController> {
                 ),
               ),
               const SizedBox(height: 20),
-              Column(
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: screensize.width * 0.5,
-                    height: screensize.height * 0.23,
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.primary.withOpacity(0.2),
-                          blurRadius: 10,
-                          offset:
-                              const Offset(0, 5), // changes position of shadow
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: screensize.width * 0.53,
+                        height: screensize.height * 0.21,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            (Icons.stars_rounded),
-                            size: 50,
-                            color: AppColors.primary,
-                          ),
-                          const SizedBox(height: 10),
-                          Text("training".tr, style: AppStyle.homeCardText),
-                          const SizedBox(height: 15),
-                          Text("Leval 2".tr, style: AppStyle.homeCardText2),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                (Icons.star_rate_outlined),
-                                size: 50,
-                                color: Color.fromARGB(255, 240, 227, 109),
+                                (Icons.stars_rounded),
+                                size: 40,
+                                color: AppColors.primary,
                               ),
-                              const SizedBox(
-                                width: 10,
+                              Text("training".tr, style: AppStyle.homeCardText),
+                              const SizedBox(height: 15),
+                              Text("Leval 2".tr, style: AppStyle.homeCardText2),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Icon(
+                                    (Icons.star_rate_outlined),
+                                    size: 40,
+                                    color: Color.fromARGB(255, 240, 227, 109),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text("254".tr,
+                                      style: AppStyle.homeCardNumber),
+                                ],
                               ),
-                              Text("254".tr, style: AppStyle.homeCardText3),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    width: screensize.width * 0.5,
-                    height: screensize.height * 0.22,
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.primary.withOpacity(0.2),
-                          blurRadius: 10,
-                          offset:
-                              const Offset(0, 5), // changes position of shadow
                         ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            (Icons.work_history),
-                            size: 50,
-                            color: AppColors.primary,
-                          ),
-                          const SizedBox(height: 10),
-                          Text("work".tr, style: AppStyle.homeCardText),
-                          const SizedBox(height: 15),
-                          Text("working_on".tr, style: AppStyle.homeCardText2),
-                          const SizedBox(height: 2),
-                          Text("site 002".tr, style: AppStyle.homeCardText3),
-                        ],
                       ),
-                    ),
+                      SizedBox(height: 15),
+                      Container(
+                        width: screensize.width * 0.53,
+                        height: screensize.height * 0.2,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                (Icons.work_history),
+                                size: 40,
+                                color: AppColors.primary,
+                              ),
+                              Text("work".tr, style: AppStyle.homeCardText),
+                              const SizedBox(height: 20),
+                              Text("working_on".tr,
+                                  style: AppStyle.homeCardSmall),
+                              const SizedBox(height: 2),
+                              Text("site 002".tr,
+                                  style: AppStyle.homeCardText3),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      Container(
+                        width: screensize.width * 0.53,
+                        height: screensize.height * 0.15,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Icon(
+                                    (Icons.report),
+                                    size: 40,
+                                    color: AppColors.primary,
+                                  ),
+                                  Text("report".tr,
+                                      style: AppStyle.homeCardText),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Icon(
+                                    (Icons.report_problem),
+                                    size: 25,
+                                    color: Color.fromARGB(255, 230, 157, 47),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text("3 Incidents".tr,
+                                      style: AppStyle.homeCardSmall),
+                                ],
+                              ),
+                              SizedBox(height: 5),
+                              Row(
+                                children: [
+                                  Icon(
+                                    (Icons.report_problem),
+                                    size: 25,
+                                    color: Color.fromARGB(255, 230, 157, 47),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text("3 Incidents".tr,
+                                      style: AppStyle.homeCardSmall),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 10),
+                  //2nd Column
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      //insurance
+                      Container(
+                        width: screensize.width * 0.39,
+                        height: screensize.height * 0.17,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                (Icons.health_and_safety),
+                                size: 40,
+                                color: AppColors.primary,
+                              ),
+                              Text("insurance".tr,
+                                  style: AppStyle.homeCardText),
+                              const SizedBox(height: 10),
+                              Text("expire_date".tr,
+                                  style: AppStyle.homeCardSmall),
+                              Text("01 Apr 2026".tr,
+                                  style: AppStyle.homeCardText3),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      //course
+                      Container(
+                        width: screensize.width * 0.39,
+                        height: screensize.height * 0.2,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                (Icons.cabin),
+                                size: 40,
+                                color: AppColors.primary,
+                              ),
+                              Text("course".tr, style: AppStyle.homeCardText),
+                              const SizedBox(height: 15),
+                              Text("working_on".tr,
+                                  style: AppStyle.homeCardSmall),
+                              const SizedBox(height: 2),
+                              Text("site 002".tr,
+                                  style: AppStyle.homeCardText3),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      //certificates
+                      Container(
+                        width: screensize.width * 0.39,
+                        height: screensize.height * 0.15,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(
+                                  0, 5), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                (Icons.circle_notifications),
+                                size: 40,
+                                color: AppColors.primary,
+                              ),
+                              Text("certificate".tr,
+                                  style: AppStyle.homeCardText),
+                              const SizedBox(height: 10),
+                              SizedBox(height: 5),
+                              Text("3 Certifications".tr,
+                                  style: AppStyle.homeCardSmall),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Get.toNamed('/login');
-                },
-                child: Text('login'.tr),
               ),
             ],
             //padding: EdgeInsets.all(30),
