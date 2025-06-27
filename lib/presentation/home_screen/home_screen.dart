@@ -1,12 +1,10 @@
 import 'package:application/core/app_export.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'controller/home_controller.dart';
 
 class HomeScreen extends GetWidget<HomeController> {
   const HomeScreen({super.key});
-  final String data = "https://example.com";
+  final String data = "https://www.youtube.com/watch?v=HrFc7W7MxzE&t=96s";
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +42,6 @@ class HomeScreen extends GetWidget<HomeController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          BackButton(
-                            color: AppColors.white,
-                            onPressed: () {
-                              Get.toNamed('/login');
-                            },
-                          ),
                           Text(
                             "AJX HOLDINGS",
                             style: AppStyle.homeWhite,
@@ -71,14 +63,17 @@ class HomeScreen extends GetWidget<HomeController> {
                       ),
                       Row(
                         children: [
-                          const CircleAvatar(
-                            backgroundColor: AppColors.primary,
-                            radius: 35,
-                            child: CircleAvatar(
+                          GestureDetector(
+                            onTap: () => Get.toNamed('/profile'),
+                            child: const CircleAvatar(
                               backgroundColor: AppColors.primary,
-                              backgroundImage: NetworkImage(
-                                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTheGBYMp1LpqF4j654bYwUPGOPVZpPmkOOohEh_IqP6332oPcynyqsafd3t1H7sbpDwEhuBQ&s"),
-                              radius: 33,
+                              radius: 35,
+                              child: CircleAvatar(
+                                backgroundColor: AppColors.primary,
+                                backgroundImage: NetworkImage(
+                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTheGBYMp1LpqF4j654bYwUPGOPVZpPmkOOohEh_IqP6332oPcynyqsafd3t1H7sbpDwEhuBQ&s"),
+                                radius: 33,
+                              ),
                             ),
                           ),
                           const SizedBox(
@@ -269,7 +264,7 @@ class HomeScreen extends GetWidget<HomeController> {
                                     color: Color.fromARGB(255, 230, 157, 47),
                                   ),
                                   SizedBox(width: 10),
-                                  Text("3 Incidents".tr,
+                                  Text("3 Audit Reports".tr,
                                       style: AppStyle.homeCardSmall),
                                 ],
                               ),
@@ -287,7 +282,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       //insurance
                       Container(
                         width: screensize.width * 0.39,
-                        height: screensize.height * 0.17,
+                        height: screensize.height * 0.16,
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(15),
@@ -312,7 +307,7 @@ class HomeScreen extends GetWidget<HomeController> {
                               ),
                               Text("insurance".tr,
                                   style: AppStyle.homeCardText),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 5),
                               Text("expire_date".tr,
                                   style: AppStyle.homeCardSmall),
                               Text("01 Apr 2026".tr,
@@ -325,7 +320,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       //course
                       Container(
                         width: screensize.width * 0.39,
-                        height: screensize.height * 0.2,
+                        height: screensize.height * 0.25,
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(15),
@@ -344,17 +339,35 @@ class HomeScreen extends GetWidget<HomeController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                (Icons.cabin),
+                                (Icons.school),
                                 size: 40,
                                 color: AppColors.primary,
                               ),
                               Text("course".tr, style: AppStyle.homeCardText),
-                              const SizedBox(height: 15),
-                              Text("working_on".tr,
+                              const SizedBox(height: 5),
+                              Text("completed".tr,
                                   style: AppStyle.homeCardSmall),
-                              const SizedBox(height: 2),
-                              Text("site 002".tr,
-                                  style: AppStyle.homeCardText3),
+                              Row(
+                                children: [
+                                  Icon(Icons.check_circle_outline,
+                                      size: 20,
+                                      color: Color.fromARGB(255, 0, 128, 0)),
+                                  SizedBox(width: 10),
+                                  Text("5".tr, style: AppStyle.homeCardNumber),
+                                ],
+                              ),
+                              Text("pending".tr, style: AppStyle.homeCardSmall),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.hourglass_empty,
+                                    size: 20,
+                                    color: Color(0xFFFFC107),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text("5".tr, style: AppStyle.homeCardNumber),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -382,14 +395,14 @@ class HomeScreen extends GetWidget<HomeController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Icon(
-                                (Icons.circle_notifications),
+                                (Icons.workspace_premium),
                                 size: 40,
                                 color: AppColors.primary,
                               ),
                               Text("certificate".tr,
                                   style: AppStyle.homeCardText),
                               const SizedBox(height: 10),
-                              SizedBox(height: 5),
+                              SizedBox(height: 2),
                               Text("3 Certifications".tr,
                                   style: AppStyle.homeCardSmall),
                             ],

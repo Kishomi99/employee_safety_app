@@ -4,10 +4,13 @@ import 'controller/login_controller.dart';
 class LoginScreen extends GetWidget<LoginController> {
   LoginScreen({super.key});
   LoginController loginController = Get.put<LoginController>(LoginController());
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -86,52 +89,75 @@ class LoginScreen extends GetWidget<LoginController> {
               const SizedBox(height: 50),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  children: [
-                    TextField(
-                      style: AppStyle.inputText,
-                      controller: controller.usernameController,
-                      decoration: InputDecoration(
-                        labelText: "email".tr,
-                        hintText: 'hint_email'.tr,
-                        prefixIcon: Icon(Icons.person),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Obx(
-                      () => TextField(
-                        controller: controller.passwordController,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
                         style: AppStyle.inputText,
+                        controller: controller.usernameController,
+                        autofocus: false,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                          labelText: 'password'.tr,
-                          hintText: 'hint_password'.tr,
+                          labelText: "email".tr,
+                          hintText: 'hint_email'.tr,
+                          prefixIcon: Icon(Icons.person),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                          prefixIcon: Icon(Icons.password_outlined),
-                          suffix: IconButton(
-                            icon: Icon(
-                              loginController.maskEnable.value ?? true
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                              color: AppColors.primary,
-                            ),
-                            onPressed: () {
-                              loginController.maskEnable.value ?? true
-                                  ? loginController.maskEnable.value = false
-                                  : loginController.maskEnable.value = true;
-                            },
-                          ),
                         ),
-                        obscureText: loginController.maskEnable.value ?? true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'val_email'.tr;
+                          } else if (!GetUtils.isEmail(value)) {
+                            return 'val_email2'.tr;
+                          }
+                          return null;
+                        },
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Obx(
+                        () => TextFormField(
+                          controller: controller.passwordController,
+                          obscureText: loginController.maskEnable.value ?? true,
+                          autofocus: false,
+                          keyboardType: TextInputType.visiblePassword,
+                          style: AppStyle.inputText,
+                          decoration: InputDecoration(
+                            labelText: 'password'.tr,
+                            prefixIcon: Icon(Icons.password_sharp),
+                            hintText: 'hint_password'.tr,
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                (loginController.maskEnable.value ?? true)
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: AppColors.primary,
+                              ),
+                              onPressed: () {
+                                loginController.maskEnable.value =
+                                    !(loginController.maskEnable.value ?? true);
+                              },
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'val_password'.tr;
+                            } else if (value.length < 6) {
+                              return 'val_password2'.tr;
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -146,7 +172,11 @@ class LoginScreen extends GetWidget<LoginController> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
                 onPressed: () {
-                  Get.toNamed('/home');
+                  if (_formKey.currentState!.validate()) {
+                    // All validations passed
+                    Get.toNamed('/main');
+                    loginController.clearValue();
+                  }
                 },
                 child: Text(
                   'login'.tr,

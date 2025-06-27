@@ -11,6 +11,10 @@ class AppLocalization extends Translations {
           //login
           "welcome": "Welcome To Embark \nJourney",
           'email': 'Email',
+          "val_email": "Email is required",
+          "val_email2": "Enter a valid email address",
+          "val_password": "Password is required",
+          "val_password2": "Password must be at least 6 characters",
           'password': 'Password',
           'hint_email': 'Enter the Email',
           'hint_password': 'Enter the Password',
@@ -23,8 +27,24 @@ class AppLocalization extends Translations {
           "insurance": "INSURANCE",
           "expire_date": "Expire Date",
           "course": "COURSES",
+          "completed": "Completed",
+          "pending": "Pending",
           "report": "REPORTS",
           "certificate": "CERTIFICATES",
+
+          //profile
+          "employee_id": "Employee ID",
+          "name": "Name",
+          "mob_num": "Mobile Number",
+          "per_mail": "Personal Email",
+          "position": "Position",
+          "current_work_place": "Current Work Place",
+          "logout": "Logout",
+          "work_mail": "Work Email",
+          "my_profile": "My Profile",
+
+          //notification
+          "notification": "Notifications",
         }
       };
 }
