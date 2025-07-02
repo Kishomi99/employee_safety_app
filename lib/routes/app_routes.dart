@@ -6,6 +6,8 @@ import 'package:application/presentation/notification_screen/binding/notificatio
 import 'package:application/presentation/notification_screen/notification_screen.dart';
 import 'package:application/presentation/profile_screen/binding/proflie_binding.dart';
 import 'package:application/presentation/profile_screen/profile_screen.dart';
+import 'package:application/presentation/sign_up_screen/binding/sign_up_binding.dart';
+import 'package:application/presentation/sign_up_screen/sign_up_screen.dart';
 import 'package:application/presentation/splash_screen/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +21,7 @@ class AppRoutes {
   static const String mainScreen = '/main';
   static const String profileScreen = '/profile';
   static const String notificationScreen = '/notification';
+  static const String signUpScreen = '/signup';
 
   static List<GetPage> pages = [
     GetPage(
@@ -61,6 +64,14 @@ class AppRoutes {
       page: () => const NotificationScreen(),
       bindings: [
         NotificationBinding(),
+      ],
+    ),
+    //signup
+    GetPage(
+      name: signUpScreen,
+      page: () => SignUpScreen(),
+      bindings: [
+        SignUpBinding(),
       ],
     ),
   ];

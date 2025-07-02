@@ -1,6 +1,5 @@
 import 'package:application/core/app_export.dart';
 import 'package:application/presentation/profile_screen/controller/profile_controller.dart';
-import 'package:application/theme/app_text_tyle.dart';
 
 class ProfileScreen extends GetWidget<ProfileController> {
   const ProfileScreen({super.key});

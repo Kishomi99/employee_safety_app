@@ -54,9 +54,16 @@ class AppStyle {
   );
 
   static TextStyle inputText = const TextStyle(
-    color: AppColors.primary,
+    color: AppColors.light,
     fontSize: 18,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle lableText = const TextStyle(
+    color: AppColors.primary,
+    fontSize: 20,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
   );
 }

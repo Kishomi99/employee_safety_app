@@ -19,6 +19,10 @@ class AppLocalization extends Translations {
           'hint_email': 'Enter the Email',
           'hint_password': 'Enter the Password',
           'login': "Login",
+          'dont_have_account': "Don't have an account?",
+          'sign_up': "Sign Up",
+          'role': 'Role',
+          'val_role': 'Role is required',
 
           //home
           "training": "TRAINING HISTORY",
@@ -45,6 +49,30 @@ class AppLocalization extends Translations {
 
           //notification
           "notification": "Notifications",
+
+          //signup
+          'register_user': 'Register User',
+          'hint_name': "Enter the Name",
+          'val_name': 'Name is required',
+          'hint_position': 'Enter the Position',
+          'val_position': 'Position is required',
+          'hint_current_work_place': 'Enter the Corrent Work Place',
+          'val_current_work_place': 'Corrent Work Place is required',
+          'hint_mobile_num': 'Enter the Mobile Number',
+          'val_mobile_num': 'Mobile Number is required',
+          'val_mobile_num2': 'Enter the valid Phone Number',
+          'hint_role': 'Select the Role',
+          'gender': 'Gender',
+          'hint_gender': 'Select the Gender',
+          'val_gender': 'Gender is required',
+          'cancel': 'Cancel',
+
+          //cancel
+          "lbl_are_u_sure": "Are you sure?",
+          "msg_are_u_sure": "Are you sure you want to discard all changes?",
+          "msg_error": "Error",
+          "lbl_yes": "Yes",
+          "lbl_no": "No",
         }
       };
 }
