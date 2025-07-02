@@ -9,6 +9,18 @@ class AppStyle {
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
   );
+  static TextStyle textWhite = const TextStyle(
+    color: AppColors.white,
+    fontSize: 23,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle textPrimary = const TextStyle(
+    color: AppColors.primary,
+    fontSize: 23,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+  );
 
   static TextStyle homeCardText = const TextStyle(
     color: AppColors.primary,
@@ -42,9 +54,16 @@ class AppStyle {
   );
 
   static TextStyle inputText = const TextStyle(
-    color: AppColors.primary,
+    color: AppColors.light,
     fontSize: 18,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle lableText = const TextStyle(
+    color: AppColors.primary,
+    fontSize: 20,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
   );
 }
