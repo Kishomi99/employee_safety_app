@@ -70,8 +70,8 @@ class HomeScreen extends GetWidget<HomeController> {
                               radius: 35,
                               child: CircleAvatar(
                                 backgroundColor: AppColors.primary,
-                                backgroundImage: NetworkImage(
-                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTheGBYMp1LpqF4j654bYwUPGOPVZpPmkOOohEh_IqP6332oPcynyqsafd3t1H7sbpDwEhuBQ&s"),
+                                backgroundImage:
+                                    AssetImage(ImageConstant.homeImage),
                                 radius: 33,
                               ),
                             ),
@@ -83,11 +83,13 @@ class HomeScreen extends GetWidget<HomeController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "0004515F",
+                                "",
+                                //  controller.referenceNo,
                                 style: AppStyle.homeWhite,
                               ),
                               Text(
-                                "Kelvin Vinith",
+                                "",
+                                //controller.userName ?? "",
                                 style: AppStyle.homeWhite,
                               ),
                               Container(
@@ -97,10 +99,11 @@ class HomeScreen extends GetWidget<HomeController> {
                                   color: AppColors.primary,
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                child: const Center(
+                                child: Center(
                                   child: Text(
-                                    "Fork Lift Operator",
-                                    style: TextStyle(
+                                    "",
+                                    // controller.position ?? "",
+                                    style: const TextStyle(
                                       color: AppColors.white,
                                       fontSize: 12,
                                       fontFamily: 'Poppins',

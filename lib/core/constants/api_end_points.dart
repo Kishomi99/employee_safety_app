@@ -5,4 +5,6 @@ class ApiEndPoints {
   // Auth Endpoints
   static String loginEndPoint = "login";
   static String registerEndPoint = "register";
+  static String getUserEndPoint = "users/";
+  static String getUserByRoleEndPoint = "users/role/";
 }
