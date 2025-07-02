@@ -19,7 +19,6 @@ class LoginController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    prefUtils = Get.put(PrefUtils());
     // Additional initialization if needed
   }
 
@@ -50,7 +49,9 @@ class LoginController extends GetxController {
           "Accept": "application/json",
         },
         requestData: loginModel.toJson(),
-        onSuccess: onCreateLoginSuccess,
+        onSuccess: (response) async {
+          await onCreateLoginSuccess(response);
+        },
         onError: (error) {
           isLoading.value = false;
           Get.snackbar(
@@ -68,15 +69,19 @@ class LoginController extends GetxController {
     }
   }
 
-  void onCreateLoginSuccess(dynamic response) async {
-    // await PrefUtils.setToken(response.accessToken);
+  Future onCreateLoginSuccess(LoginResponseModel response) async {
+    await PrefUtils.setToken(response.accessToken);
+    await PrefUtils.setUserId(response.user.id);
+    print(response.accessToken);
     await PrefUtils.setLogged(true);
     Get.offAllNamed(AppRoutes.mainScreen);
+    clearValue();
   }
 
-  Future<void> setPreference(LoginResponseModel response) async {
-    prefUtils.setToken(response.accessToken);
-  }
+  // Future<void> setPreference(LoginResponseModel response) async {
+  //   await prefUtils.setToken(response.accessToken);
+  //   await PrefUtils.setLogged(true);
+  // }
 
   void clearValue() {
     usernameController.clear();

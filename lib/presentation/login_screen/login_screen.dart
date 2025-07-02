@@ -168,21 +168,10 @@ class LoginScreen extends GetWidget<LoginController> {
                         const SizedBox(
                           height: 10,
                         ),
-                        // Row(
-                        //   children: [
-                        //     Text("role".tr, style: AppStyle.lableText),
-                        //     const SizedBox(width: 5),
-                        //     Text(
-                        //       '*',
-                        //       style: AppStyle.inputText
-                        //           .copyWith(color: Colors.red),
-                        //     ),
-                        //   ],
-                        // ),
                         const SizedBox(height: 5),
                         Obx(() {
                           return CustomDropdown(
-                            lableText: "Role",
+                            // lableText: "Role",
                             items: controller
                                 .dropDownItems.value.roleItemList.value,
                             onChanged: (value) {
@@ -238,7 +227,6 @@ class LoginScreen extends GetWidget<LoginController> {
                     controller.loged.value = true;
                     if (_formKey.currentState!.validate()) {
                       controller.callLogin();
-                      controller.clearValue();
                     }
                   },
                 ),

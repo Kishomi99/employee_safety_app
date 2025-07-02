@@ -1,3 +1,4 @@
+import 'package:application/core/utils/pref_utils.dart';
 import 'package:application/routes/app_routes.dart';
 import 'package:get/get.dart';
 
@@ -9,8 +10,20 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     Future.delayed(const Duration(milliseconds: 3000), () {
-      //checkLoginStatus();
-      Get.offAllNamed(AppRoutes.loginScreen);
+      checkLoginStatus();
     });
+  }
+
+  void checkLoginStatus() async {
+    await PrefUtils().init();
+
+    String token = PrefUtils().getToken();
+    print('token is $token');
+
+    if (token.isNotEmpty) {
+      Get.offAllNamed(AppRoutes.mainScreen);
+    } else {
+      Get.offAllNamed(AppRoutes.loginScreen);
+    }
   }
 }

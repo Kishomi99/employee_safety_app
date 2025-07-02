@@ -1,5 +1,6 @@
 import 'package:application/core/app_export.dart';
 import 'package:application/presentation/profile_screen/controller/profile_controller.dart';
+import 'package:flutter/material.dart';
 
 class ProfileScreen extends GetWidget<ProfileController> {
   const ProfileScreen({super.key});
@@ -33,8 +34,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                       radius: 50,
                       child: CircleAvatar(
                         backgroundColor: AppColors.primary,
-                        backgroundImage: NetworkImage(
-                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTheGBYMp1LpqF4j654bYwUPGOPVZpPmkOOohEh_IqP6332oPcynyqsafd3t1H7sbpDwEhuBQ&s"),
+                        backgroundImage: AssetImage(ImageConstant.homeImage),
                         radius: 47,
                       ),
                     ),
@@ -45,7 +45,8 @@ class ProfileScreen extends GetWidget<ProfileController> {
                         const SizedBox(
                           height: 5,
                         ),
-                        Text('123456', style: AppStyle.homeCardNumber),
+                        Text(controller.referenceNo,
+                            maxLines: 2, style: AppStyle.homeCardNumber),
                       ],
                     ),
                   ],
@@ -56,10 +57,10 @@ class ProfileScreen extends GetWidget<ProfileController> {
                 Expanded(
                   child: ListView(
                     children: [
-                      userListTile(lableName: "name".tr, value: 'John Doe'),
                       userListTile(
-                          lableName: "position".tr,
-                          value: 'Fork Lift Operator'),
+                          lableName: "name".tr, value: controller.userName),
+                      userListTile(
+                          lableName: "position".tr, value: controller.position),
                       userListTile(
                           lableName: "current_work_place".tr,
                           value: 'Albany, new York- site 002'),
