@@ -1,6 +1,6 @@
 class MainUser {
   MainUser({
-    required this.id,
+    this.id,
     this.name,
     this.email,
     this.role,
@@ -8,7 +8,7 @@ class MainUser {
     this.referenceNumber,
   });
 
-  final int id;
+  final int? id;
   final String? name;
   final String? email;
   final String? role;
@@ -43,12 +43,12 @@ class MainUser {
 
 class UserInformation {
   UserInformation({
-    required this.id,
-    required this.userId,
+    this.id,
+    this.userId,
     this.position,
-    required this.currentWorkplace,
-    required this.mobileNumber,
-    required this.gender,
+    this.currentWorkplace,
+    this.mobileNumber,
+    this.gender,
     this.profilePhoto,
   });
 

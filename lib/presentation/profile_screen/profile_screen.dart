@@ -1,6 +1,5 @@
 import 'package:application/core/app_export.dart';
 import 'package:application/presentation/profile_screen/controller/profile_controller.dart';
-import 'package:flutter/material.dart';
 
 class ProfileScreen extends GetWidget<ProfileController> {
   const ProfileScreen({super.key});
@@ -45,8 +44,12 @@ class ProfileScreen extends GetWidget<ProfileController> {
                         const SizedBox(
                           height: 5,
                         ),
-                        Text(controller.referenceNo,
-                            maxLines: 2, style: AppStyle.homeCardNumber),
+                        Text(controller.model.referenceNumber ?? "",
+                            maxLines: 2,
+                            style: AppStyle.homeCardNumber.copyWith(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w600,
+                            )),
                       ],
                     ),
                   ],
@@ -58,19 +61,28 @@ class ProfileScreen extends GetWidget<ProfileController> {
                   child: ListView(
                     children: [
                       userListTile(
-                          lableName: "name".tr, value: controller.userName),
+                          lableName: "name".tr,
+                          value: controller.model.name ?? ""),
                       userListTile(
-                          lableName: "position".tr, value: controller.position),
+                          lableName: "position".tr,
+                          value:
+                              controller.model.userInformation?.position ?? ""),
                       userListTile(
                           lableName: "current_work_place".tr,
-                          value: 'Albany, new York- site 002'),
+                          value: controller
+                                  .model.userInformation?.currentWorkplace ??
+                              ""),
                       userListTile(
-                          lableName: "mob_num".tr, value: '078 678 7899'),
+                          lableName: "mob_num".tr,
+                          value:
+                              controller.model.userInformation?.mobileNumber ??
+                                  ""),
                       userListTile(
-                          lableName: "per_mail".tr, value: 'johnram@gmail.com'),
-                      userListTile(
-                          lableName: "work_mail".tr,
-                          value: "john@ajxgmail.com"),
+                          lableName: "per_mail".tr,
+                          value: controller.model.email ?? ""),
+                      // userListTile(
+                      //     lableName: "work_mail".tr,
+                      //     value: "john@ajxgmail.com"),
                     ],
                   ),
                 ),
@@ -83,8 +95,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                   onPressed: () {
-                    // All validations passed
-                    Get.toNamed('/login');
+                    ProfileController.logout();
                   },
                   child: Text(
                     'logout'.tr,

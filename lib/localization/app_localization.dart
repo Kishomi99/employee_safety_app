@@ -73,6 +73,14 @@ class AppLocalization extends Translations {
           "msg_error": "Error",
           "lbl_yes": "Yes",
           "lbl_no": "No",
+          //manager home
+
+          "search": "Search",
+          'report_tab': "Reports",
+          'project_tab': "Projects",
+          'employee_count': "Employees",
+          "incident_reported": ' Incidents reported',
+          'audit_report': 'Audit Reports',
         }
       };
 }

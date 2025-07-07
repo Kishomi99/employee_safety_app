@@ -6,31 +6,35 @@ import 'package:application/data/models/user_model/user_model.dart';
 /// This class manages the state of the HomeScreen, including the
 /// current HomeModelObj
 class HomeController extends GetxController {
-  String referenceNo = "";
-  String userName = "";
-  String position = "";
   RxBool isLoading = false.obs;
   int userId = 0;
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
 
     var prefUtils = Get.put(PrefUtils());
-    prefUtils.init();
     userId = prefUtils.getUserId();
-    getUserById();
+    await getUserDetailsById();
     // Initialize any necessary data or state here
   }
 
-  Future<void> getUserById() async {
+  @override
+  void onReady() {
+    super.onReady();
+    //  getUserDetailsById();
+  }
+
+  Future<void> getUserDetailsById() async {
     try {
       isLoading.value = true;
+      var token = Get.find<PrefUtils>().getToken();
       await Get.put(ApiClient()).getUserById(
         userId: userId,
+        headers: {
+          'Authorization': "Bearer $token",
+        },
         onSuccess: (response) async {
           await onGetUserByID(response);
-          // Handle successful response
-          print('User data retrieved successfully: $response');
         },
         onError: (error) {
           // Handle error response
@@ -44,21 +48,12 @@ class HomeController extends GetxController {
       isLoading.value = false;
     } catch (e) {
       isLoading.value = false;
-      Get.snackbar(
-        'Error',
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      print('Error fetching user data: $e');
     }
   }
 
+  late MainUser? mainUser = MainUser();
   Future<void> onGetUserByID(MainUser response) async {
-    referenceNo = response.referenceNumber!;
-    position = response.userInformation!.position!;
-    userName = response.name!;
-    print(response);
+    mainUser = response;
   }
-
-  @override
-  void onReady() {}
 }
