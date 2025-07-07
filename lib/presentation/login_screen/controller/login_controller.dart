@@ -71,6 +71,7 @@ class LoginController extends GetxController {
 
   Future onCreateLoginSuccess(LoginResponseModel response) async {
     await PrefUtils.setToken(response.accessToken);
+    await PrefUtils.setUserRole(response.user.role);
     await PrefUtils.setUserId(response.user.id);
     print(response.accessToken);
     await PrefUtils.setLogged(true);

@@ -1,6 +1,9 @@
 import 'package:application/presentation/home_screen/binding/home_binding.dart';
 import 'package:application/presentation/home_screen/home_screen.dart';
 import 'package:application/presentation/login_screen/login_screen.dart';
+import 'package:application/presentation/manager_home_screen/binding/manager_home_binding.dart';
+import 'package:application/presentation/manager_home_screen/manager_home_screen.dart';
+import 'package:application/presentation/nav_bar_main/binding/nav_bar_binding.dart';
 import 'package:application/presentation/nav_bar_main/navbar_main_screen.dart';
 import 'package:application/presentation/notification_screen/binding/notification_binding.dart';
 import 'package:application/presentation/notification_screen/notification_screen.dart';
@@ -22,6 +25,7 @@ class AppRoutes {
   static const String profileScreen = '/profile';
   static const String notificationScreen = '/notification';
   static const String signUpScreen = '/signup';
+  static const String managerHome = '/manager_home';
 
   static List<GetPage> pages = [
     GetPage(
@@ -40,14 +44,28 @@ class AppRoutes {
         LoginBinding(),
       ],
     ),
-    GetPage(name: mainScreen, page: () => const MainScreen()),
+    GetPage(
+      name: mainScreen,
+      page: () => MainScreen(),
+      bindings: [
+        MainScreenNavBinding(),
+      ],
+    ),
 
     //home
     GetPage(
       name: homeScreen,
-      page: () => const HomeScreen(),
+      page: () => HomeScreen(),
       bindings: [
         HomeBinding(),
+      ],
+    ),
+    //manager home
+    GetPage(
+      name: managerHome,
+      page: () => ManagerHomeScreen(),
+      bindings: [
+        ManagerHomeScreenBinding(),
       ],
     ),
     //profile

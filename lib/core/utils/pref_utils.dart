@@ -27,12 +27,20 @@ class PrefUtils {
     await _prefs!.setString('token', value);
   }
 
+  static Future<void> setUserRole(String value) async {
+    await _prefs!.setString('role', value);
+  }
+
   static Future<void> setUserId(int value) async {
     await _prefs!.setString('id', value.toString());
   }
 
   String getToken() {
     return _prefs!.getString('token') ?? '';
+  }
+
+  String getUserRole() {
+    return _prefs!.getString('role') ?? '';
   }
 
   int getUserId() {

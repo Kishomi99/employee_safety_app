@@ -1,15 +1,16 @@
 import 'package:application/core/app_export.dart';
+import 'package:application/data/models/user_model/user_model.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'controller/home_controller.dart';
 
 class HomeScreen extends GetWidget<HomeController> {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
   final String data = "https://www.youtube.com/watch?v=HrFc7W7MxzE&t=96s";
 
+  HomeController loginController = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
-    print(screensize);
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 223, 212, 228),
       body: SafeArea(
@@ -64,7 +65,14 @@ class HomeScreen extends GetWidget<HomeController> {
                       Row(
                         children: [
                           GestureDetector(
-                            onTap: () => Get.toNamed('/profile'),
+                            onTap: () {
+                              Get.toNamed(
+                                AppRoutes.profileScreen,
+                                arguments: {
+                                  "data": loginController.mainUser,
+                                },
+                              );
+                            },
                             child: const CircleAvatar(
                               backgroundColor: AppColors.primary,
                               radius: 35,
@@ -83,13 +91,11 @@ class HomeScreen extends GetWidget<HomeController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "",
-                                //  controller.referenceNo,
+                                loginController.mainUser!.referenceNumber ?? "",
                                 style: AppStyle.homeWhite,
                               ),
                               Text(
-                                "",
-                                //controller.userName ?? "",
+                                loginController.mainUser!.name ?? "",
                                 style: AppStyle.homeWhite,
                               ),
                               Container(
@@ -101,8 +107,9 @@ class HomeScreen extends GetWidget<HomeController> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "",
-                                    // controller.position ?? "",
+                                    loginController.mainUser!.userInformation
+                                            ?.position ??
+                                        "",
                                     style: const TextStyle(
                                       color: AppColors.white,
                                       fontSize: 12,
@@ -195,7 +202,7 @@ class HomeScreen extends GetWidget<HomeController> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(
+                              const Icon(
                                 (Icons.work_history),
                                 size: 40,
                                 color: AppColors.primary,
@@ -236,7 +243,7 @@ class HomeScreen extends GetWidget<HomeController> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     (Icons.report),
                                     size: 40,
                                     color: AppColors.primary,
