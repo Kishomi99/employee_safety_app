@@ -11,15 +11,14 @@ class ProfileController extends GetxController {
   String userName = "";
   String position = "";
   RxBool isLoading = false.obs;
-  int userId = 0;
+  String userRole = "";
   var model = MainUser();
   @override
   void onInit() {
     super.onInit();
 
-    // var prefUtils = Get.put(PrefUtils());
-    // prefUtils.init();
-    // userId = prefUtils.getUserId();
+    var prefUtils = Get.put(PrefUtils());
+    userRole = prefUtils.getUserRole();
     final arguments = Get.arguments;
     if (arguments != null) {
       model = arguments['data'];

@@ -2,11 +2,13 @@ import 'package:application/core/app_export.dart';
 import 'package:application/presentation/profile_screen/controller/profile_controller.dart';
 
 class ProfileScreen extends GetWidget<ProfileController> {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+  ProfileController profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
     var screensize = MediaQuery.of(context).size;
+
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 223, 212, 228),
         appBar: AppBar(
@@ -44,12 +46,19 @@ class ProfileScreen extends GetWidget<ProfileController> {
                         const SizedBox(
                           height: 5,
                         ),
-                        Text(controller.model.referenceNumber ?? "",
-                            maxLines: 2,
-                            style: AppStyle.homeCardNumber.copyWith(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w600,
-                            )),
+                        profileController.userRole == "Employee"
+                            ? Text(controller.model.referenceNumber ?? "",
+                                maxLines: 2,
+                                style: AppStyle.homeCardNumber.copyWith(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w600,
+                                ))
+                            : Text("Manager",
+                                maxLines: 2,
+                                style: AppStyle.homeCardNumber.copyWith(
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w600,
+                                ))
                       ],
                     ),
                   ],
@@ -108,7 +117,7 @@ class ProfileScreen extends GetWidget<ProfileController> {
         ));
   }
 
-  ListTile userListTile({required String lableName, required String value}) {
+  ListTile userListTile({required String lableName, String? value}) {
     return ListTile(
       title: Text(lableName, style: AppStyle.inputText),
       subtitle: Container(
@@ -127,10 +136,15 @@ class ProfileScreen extends GetWidget<ProfileController> {
             ),
           ],
         ),
-        child: Text(
-          value,
-          style: AppStyle.homeCardText2,
-        ),
+        child: profileController.userRole == "Employee"
+            ? Text(
+                value!,
+                style: AppStyle.homeCardText2,
+              )
+            : Text(
+                "manager",
+                style: AppStyle.homeCardText2,
+              ),
       ),
     );
   }

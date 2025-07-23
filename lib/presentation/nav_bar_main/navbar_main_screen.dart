@@ -3,6 +3,7 @@ import 'package:application/presentation/home_screen/home_screen.dart';
 import 'package:application/presentation/manager_home_screen/manager_home_screen.dart';
 import 'package:application/presentation/nav_bar_main/controller/nav_bar_controller.dart';
 import 'package:application/presentation/notification_screen/notification_screen.dart';
+import 'package:application/presentation/profile_screen/profile_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class MainScreen extends GetWidget<MainScreenNavController> {
@@ -28,10 +29,12 @@ class MainScreen extends GetWidget<MainScreenNavController> {
             animationDuration: const Duration(milliseconds: 300),
             index: controller.selectedIndex.value,
             onTap: controller.changeTab,
-            items: const <Widget>[
+            items: <Widget>[
               Icon(Icons.notifications, size: 30, color: Colors.white),
               Icon(Icons.home, size: 30, color: Colors.white),
-              Icon(Icons.card_membership, size: 30, color: Colors.white),
+              controller.userRole == "Manager"
+                  ? Icon(Icons.person, size: 30, color: Colors.white)
+                  : Icon(Icons.card_membership, size: 30, color: Colors.white),
             ],
           )),
       body: Obx(() => pages[controller.selectedIndex.value]),
@@ -48,7 +51,7 @@ class MainScreen extends GetWidget<MainScreenNavController> {
 
   Widget _getCertificateScreenBasedOnRole(String? role) {
     if (role == 'Manager') {
-      return const NotificationScreen(); // Manager-specific certificate
+      return ProfileScreen(); // Manager-specific certificate
     } else {
       return const NotificationScreen(); // Employee-specific certificate
     }
